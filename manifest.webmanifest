@@ -1,0 +1,13 @@
+{
+  "name": "ДВОЕ — ведущий вечера",
+  "short_name": "ДВОЕ",
+  "description": "Локальный ведущий вечера и режим Пантеон",
+  "lang": "ru",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#0d090d",
+  "theme_color": "#120d12",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

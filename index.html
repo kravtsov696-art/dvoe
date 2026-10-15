@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#120d12">
+  <meta name="description" content="ДВОЕ — локальный ведущий вечера и режим Пантеон">
+  <title>ДВОЕ</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="ambient ambient-a"></div>
+  <div class="ambient ambient-b"></div>
+
+  <main class="shell">
+    <header class="topbar">
+      <button id="homeBtn" class="brand" type="button" aria-label="На главный экран">
+        <span class="brand-mark">Д</span>
+        <span><strong>ДВОЕ</strong><small>локальная версия</small></span>
+      </button>
+      <div class="top-actions">
+        <span id="networkBadge" class="badge">локально</span>
+        <button id="settingsBtn" class="icon-btn" type="button" aria-label="Настройки">⋯</button>
+      </div>
+    </header>
+
+    <section id="home" class="home">
+      <div class="hero">
+        <p class="kicker">ВЕЧЕР ДЛЯ ДВОИХ</p>
+        <h1>Один экран.<br><em>Два режима.</em></h1>
+        <p class="lead">Все сценарии работают локально. Интернет и Telegram не нужны.</p>
+      </div>
+
+      <div class="mode-grid">
+        <button id="startHostBtn" class="mode-card host-card" type="button">
+          <span class="mode-index">01</span>
+          <span class="mode-copy"><strong>Ведущий</strong><small>Лис или Лиса ведёт вечер по уровням</small></span>
+          <span class="mode-arrow">↗</span>
+        </button>
+        <button id="startPantheonBtn" class="mode-card pantheon-card" type="button">
+          <span class="mode-index">02</span>
+          <span class="mode-copy"><strong>Пантеон</strong><small>Пять веток и пять голосов игры</small></span>
+          <span class="mode-arrow">↗</span>
+        </button>
+      </div>
+
+      <button id="resumeBtn" class="resume-card hidden" type="button">
+        <span><small>СОХРАНЁННЫЙ ВЕЧЕР</small><strong id="resumeTitle">Продолжить</strong></span>
+        <span>→</span>
+      </button>
+
+      <div class="quick-row">
+        <button id="dayBtn" class="quiet-btn" type="button">Дневное задание</button>
+        <button id="installBtn" class="quiet-btn hidden" type="button">Установить</button>
+      </div>
+
+      <div class="stats" aria-label="Содержимое базы">
+        <div><strong id="hostCount">310</strong><span>сцен ведущего</span></div>
+        <div><strong id="pantheonCount">50</strong><span>сцен Пантеона</span></div>
+        <div><strong id="lineCount">295</strong><span>реплик</span></div>
+      </div>
+
+      <p class="age-note">Только для совершеннолетних. Любое действие выполняется исключительно по взаимному согласию. «Стоп» действует всегда.</p>
+    </section>
+
+    <section id="game" class="game hidden" aria-live="polite">
+      <div class="game-meta">
+        <span id="modeLabel">Ведущий</span>
+        <span id="sceneLabel">HUB_START</span>
+      </div>
+      <article id="sceneCard" class="scene-card">
+        <div id="sceneGlow" class="scene-glow"></div>
+        <p id="eyebrow" class="eyebrow">ВЕДУЩИЙ</p>
+        <h2 id="sceneTitle">Начало</h2>
+        <div id="timer" class="timer hidden"><span id="timerValue">00:00</span><i></i></div>
+        <div id="sceneBody" class="scene-body"></div>
+        <div id="musicBox" class="music hidden"></div>
+      </article>
+      <form id="textForm" class="text-form hidden">
+        <input id="textInput" maxlength="300" autocomplete="off" placeholder="Введите ответ">
+        <button type="submit">Отправить</button>
+      </form>
+      <div id="primaryActions" class="primary-actions"></div>
+      <div id="utilityActions" class="utility-actions"></div>
+      <div class="game-footer">
+        <button id="restartBtn" type="button">Начать заново</button>
+        <button id="saveBtn" type="button">Сохранено автоматически</button>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="overlay" class="modal">
+    <div class="modal-card">
+      <button id="closeOverlay" class="modal-close" type="button">×</button>
+      <p id="overlayKicker" class="kicker">ДВОЕ</p>
+      <h3 id="overlayTitle">Сообщение</h3>
+      <div id="overlayBody" class="modal-body"></div>
+      <div id="overlayActions" class="modal-actions"></div>
+    </div>
+  </dialog>
+
+  <dialog id="settings" class="modal">
+    <form method="dialog" class="modal-card settings-card">
+      <button class="modal-close" value="cancel" type="submit">×</button>
+      <p class="kicker">НАСТРОЙКИ</p>
+      <h3>Локальная версия</h3>
+      <label>URL Apps Script API
+        <input id="apiUrl" type="url" placeholder="https://script.google.com/macros/s/.../exec">
+      </label>
+      <p class="hint">URL нужен только для будущей синхронизации двух телефонов. Локальный режим работает без него.</p>
+      <div class="modal-actions">
+        <button id="testApiBtn" class="secondary" type="button">Проверить API</button>
+        <button id="syncDbBtn" class="secondary" type="button">Обновить базу из таблиц</button>
+        <button id="exportBtn" class="secondary" type="button">Экспорт сохранения</button>
+        <label class="secondary file-label">Импорт сохранения<input id="importInput" type="file" accept="application/json"></label>
+        <button id="clearBtn" class="danger" type="button">Удалить сохранение</button>
+        <button class="primary" value="ok" type="submit">Готово</button>
+      </div>
+      <p id="apiStatus" class="hint"></p>
+    </form>
+  </dialog>
+
+  <script src="game-data.js"></script>
+  <script src="engine.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
