@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#16181c">
+<title>ROYAL TOOTH — магазин</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<style>
+:root{--gold:#EEC28B;--gold2:#D7A470;--bg:#16181c;--card:#20232a;--line:rgba(215,164,112,.3);--text:#F8F7F4;--muted:#9a968f}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{background:var(--bg);color:var(--text);font:16px/1.4 -apple-system,Segoe UI,Roboto,Arial,sans-serif;padding-bottom:90px}
+header{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line);padding:12px 14px;display:flex;align-items:center;gap:10px}
+header h1{font-size:18px;letter-spacing:2px;color:var(--gold);flex:1}
+header small{display:block;font-size:11px;letter-spacing:1px;color:var(--muted)}
+.cartbtn{position:relative;background:none;border:1px solid var(--line);color:var(--gold);border-radius:12px;width:46px;height:44px;font-size:20px}
+.cnt{position:absolute;top:-6px;right:-6px;background:var(--gold);color:#1c1c1e;border-radius:10px;min-width:20px;height:20px;font-size:12px;font-weight:700;display:none;align-items:center;justify-content:center;padding:0 5px}
+.tabs{display:flex;gap:8px;overflow-x:auto;padding:10px 14px;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;border:1px solid var(--line);background:none;color:var(--text);border-radius:20px;padding:8px 14px;font-size:14px}
+.tab.on{background:var(--gold);color:#1c1c1e;border-color:var(--gold)}
+.search{margin:0 14px 6px;width:calc(100% - 28px);background:var(--card);border:1px solid var(--line);border-radius:12px;color:var(--text);padding:11px 14px;font-size:16px}
+.list{padding:6px 14px;display:grid;gap:10px}
+.item{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px;display:flex;gap:12px;align-items:center}
+.ph{width:76px;height:76px;flex:0 0 76px;border-radius:10px;background:#f3f1ec;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.ph img{max-width:100%;max-height:100%;object-fit:contain}
+.ph span{color:var(--gold2);font-size:26px}
+.info{flex:1;min-width:0}
+.grp{font-size:11px;letter-spacing:1px;color:var(--muted);text-transform:uppercase}
+.nm{font-size:15px;margin:2px 0 6px}
+.row{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.price{color:var(--gold);font-weight:700;font-size:17px}
+.price.q{color:var(--muted);font-weight:400;font-size:13px}
+.add,.qty button{background:var(--gold);color:#1c1c1e;border:0;border-radius:10px;padding:9px 12px;font-weight:700;font-size:14px}
+.qty{display:flex;align-items:center;gap:8px}
+.qty button{width:34px;padding:7px 0;font-size:18px}
+.qty b{min-width:22px;text-align:center}
+.bar{position:fixed;left:0;right:0;bottom:0;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:linear-gradient(transparent,var(--bg) 30%);display:none}
+.bar button{width:100%;background:linear-gradient(90deg,#976035,#FFE0AF 30%,#D7A470 70%,#94623C);color:#1c1c1e;border:0;border-radius:14px;padding:15px;font-weight:700;font-size:16px;display:flex;justify-content:space-between}
+.page{padding:14px}
+.page h2{color:var(--gold);margin-bottom:12px;font-size:19px}
+.back{background:none;border:0;color:var(--gold);font-size:15px;margin-bottom:10px}
+label{display:block;font-size:13px;color:var(--muted);margin:12px 0 4px}
+input,textarea,select{width:100%;background:var(--card);border:1px solid var(--line);border-radius:12px;color:var(--text);padding:12px;font-size:16px;font-family:inherit}
+.total{display:flex;justify-content:space-between;font-size:18px;margin:16px 0 4px}
+.total span:last-child{color:var(--gold);font-weight:700}
+.note{font-size:13px;color:var(--muted);margin:4px 0 10px}
+.big{width:100%;margin-top:14px;background:var(--gold);color:#1c1c1e;border:0;border-radius:14px;padding:15px;font-weight:700;font-size:16px}
+.big:disabled{opacity:.5}
+.ok{text-align:center;padding:40px 10px}
+.ok .crown{font-size:48px;color:var(--gold)}
+.empty{text-align:center;color:var(--muted);padding:40px 0}
+.toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:#000c;color:#fff;padding:10px 16px;border-radius:20px;font-size:14px;opacity:0;transition:.25s;pointer-events:none}
+.toast.on{opacity:1}
+.err{color:#ff6b5e;font-size:14px;margin-top:8px}
+</style>
+</head>
+<body>
+<header>
+  <h1>ROYAL TOOTH<small>зуботехнические материалы</small></h1>
+  <button class="cartbtn" onclick="go('cart')" aria-label="Корзина">🛒<span class="cnt" id="cnt">0</span></button>
+</header>
+<div id="app"></div>
+<div class="bar" id="bar"><button onclick="go('cart')"><span id="barL">Корзина</span><span id="barR"></span></button></div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ===== НАСТРОЙКИ (меняется только здесь) ===== */
+const CONFIG = {
+  APPS_URL: "",            // ссылка на веб-приложение Apps Script (после настройки, см. README)
+  TELEGRAM_USER: "RoyalTooth" // ник в Telegram без @ — запасной путь, если APPS_URL пустой
+};
+
+const tg = window.Telegram && Telegram.WebApp;
+if (tg) { try { tg.ready(); tg.expand(); } catch(e){} }
+const tgUser = tg && tg.initDataUnsafe && tg.initDataUnsafe.user;
+
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const rub = n => Math.round(n).toLocaleString("ru-RU") + " ₽";
+const load = (k,d) => { try { return JSON.parse(localStorage.getItem(k)) || d; } catch(e){ return d; } };
+const save = (k,v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} };
+
+let PRODUCTS = [];
+let cart = load("rt_cart", {});
+const saved = load("rt_client", {});
+const S = { view:"home", group:"Все", q:"", name: saved.name || (tgUser ? [tgUser.first_name, tgUser.last_name].filter(Boolean).join(" ") : ""),
+  phone: saved.phone || "", delivery: saved.delivery || "Самовывоз", address: saved.address || "", comment:"", sending:false, error:"", done:null };
+let reqId = null;
+
+const byCode = c => PRODUCTS.find(p => p.code === c);
+const lines = () => Object.entries(cart).map(([c,q]) => ({ p:byCode(c), q })).filter(l => l.p);
+const count = () => lines().reduce((s,l) => s + l.q, 0);
+const total = () => lines().reduce((s,l) => s + (l.p.price ? l.p.price*l.q : 0), 0);
+const unpriced = () => lines().some(l => !l.p.price);
+
+function toast(t){ const e=$("#toast"); e.textContent=t; e.classList.add("on"); setTimeout(()=>e.classList.remove("on"),1600); }
+function go(v){ S.view=v; render(); window.scrollTo(0,0); }
+function setQty(c,q){ if(q<=0) delete cart[c]; else cart[c]=q; save("rt_cart",cart); render(); }
+
+async function init(){
+  try { PRODUCTS = await (await fetch("catalog.json")).json(); } catch(e){ PRODUCTS = []; }
+  if (CONFIG.APPS_URL) {
+    try {
+      const d = await (await fetch(CONFIG.APPS_URL + "?api=catalog")).json();
+      if (d && d.ok && d.products) d.products.forEach(u => { const p = byCode(u.code); if (p) { if (u.price) p.price = u.price; if (u.stock !== undefined && u.stock !== "") p.stock = u.stock; if (u.hidden) p.hidden = true; } });
+    } catch(e){}
+  }
+  PRODUCTS = PRODUCTS.filter(p => !p.hidden);
+  Object.keys(cart).forEach(c => { if (!byCode(c)) delete cart[c]; });
+  render();
+}
+
+function itemHtml(p){
+  const q = cart[p.code] || 0;
+  const ph = p.img ? `<img src="img/${esc(p.img)}" alt="" loading="lazy">` : `<span>♛</span>`;
+  const price = p.price ? `<span class="price">${rub(p.price)}</span>` : `<span class="price q">цена по запросу</span>`;
+  const ctl = q ? `<div class="qty"><button onclick="setQty('${p.code}',${q-1})">−</button><b>${q}</b><button onclick="setQty('${p.code}',${q+1})">+</button></div>`
+                : `<button class="add" onclick="setQty('${p.code}',1);toast('Добавлено')">В корзину</button>`;
+  const st = (p.stock !== undefined && Number(p.stock) <= 0) ? `<div class="note" style="margin:2px 0 0">под заказ</div>` : "";
+  return `<div class="item"><div class="ph">${ph}</div><div class="info"><div class="grp">${esc(p.group)}</div><div class="nm">${esc(p.name)}</div><div class="row">${price}${ctl}</div>${st}</div></div>`;
+}
+
+function render(){
+  const app = $("#app"), n = count();
+  const c = $("#cnt"); c.style.display = n ? "flex" : "none"; c.textContent = n;
+  const bar = $("#bar");
+  if (S.view === "home" && n) { bar.style.display="block"; $("#barL").textContent = "Корзина · " + n + " шт"; $("#barR").textContent = total() ? rub(total()) : "→"; } else bar.style.display="none";
+
+  if (S.view === "home") {
+    const groups = ["Все", ...new Set(PRODUCTS.map(p => p.group))];
+    const q = S.q.trim().toLowerCase();
+    const items = PRODUCTS.filter(p => (S.group==="Все" || p.group===S.group) && (!q || (p.name+" "+p.group).toLowerCase().includes(q)));
+    app.innerHTML = `<div class="tabs">${groups.map(g => `<button class="tab ${g===S.group?"on":""}" data-g="${esc(g)}">${esc(g)}</button>`).join("")}</div>
+      <input class="search" id="q" placeholder="Поиск: гипс, A2, гильзы…" value="${esc(S.q)}">
+      <div class="list">${items.map(itemHtml).join("") || `<div class="empty">Ничего не найдено</div>`}</div>`;
+    app.querySelectorAll(".tab").forEach(b => b.onclick = () => { S.group = b.dataset.g; render(); });
+    const qi = $("#q"); qi.oninput = () => { S.q = qi.value; const pos = qi.selectionStart; render(); const e=$("#q"); e.focus(); e.setSelectionRange(pos,pos); };
+  }
+  else if (S.view === "cart") {
+    const ls = lines();
+    if (!ls.length) { app.innerHTML = `<div class="page"><button class="back" onclick="go('home')">← Каталог</button><div class="empty">Корзина пуста</div></div>`; return; }
+    app.innerHTML = `<div class="page"><button class="back" onclick="go('home')">← Каталог</button><h2>Корзина</h2>
+      <div class="list" style="padding:0">${ls.map(l => itemHtml(l.p)).join("")}</div>
+      <div class="total"><span>Итого</span><span>${total() ? rub(total()) : ""}${unpriced() ? (total() ? " + " : "") + "уточним" : ""}</span></div>
+      ${unpriced() ? `<div class="note">Цену позиций без цены подтвердим сообщением.</div>` : ""}
+      <h2 style="margin-top:20px">Ваши данные</h2>
+      <label>Имя</label><input id="f_name" value="${esc(S.name)}">
+      <label>Телефон</label><input id="f_phone" type="tel" value="${esc(S.phone)}" placeholder="+7…">
+      <label>Получение</label><select id="f_del"><option ${S.delivery==="Самовывоз"?"selected":""}>Самовывоз</option><option ${S.delivery==="СДЭК"?"selected":""}>СДЭК</option></select>
+      <div id="addrBox" style="display:${S.delivery==="СДЭК"?"block":"none"}"><label>Город и пункт СДЭК</label><input id="f_addr" value="${esc(S.address)}"></div>
+      <label>Комментарий</label><textarea id="f_com" rows="2">${esc(S.comment)}</textarea>
+      ${S.error ? `<div class="err">${esc(S.error)}</div>` : ""}
+      <button class="big" id="send" ${S.sending?"disabled":""}>${S.sending?"Отправляю…":"Оформить заказ"}</button></div>`;
+    const bind = (id,key) => { const e=$(id); e.oninput = () => S[key] = e.value; };
+    bind("#f_name","name"); bind("#f_phone","phone"); bind("#f_addr","address"); bind("#f_com","comment");
+    $("#f_del").onchange = e => { S.delivery = e.target.value; $("#addrBox").style.display = S.delivery==="СДЭК"?"block":"none"; };
+    $("#send").onclick = submit;
+  }
+  else if (S.view === "done") {
+    app.innerHTML = `<div class="ok"><div class="crown">♛</div><h2>Заказ принят</h2><p class="note" style="font-size:15px">${S.done && S.done.num ? "Номер заказа: <b>" + esc(S.done.num) + "</b><br>" : ""}Мы свяжемся с вами в ближайшее время.</p><button class="big" onclick="go('home')">В каталог</button></div>`;
+  }
+}
+
+function orderText(num){
+  let t = "Заказ ROYAL TOOTH" + (num ? " №" + num : "") + "\n\n" + lines().map(l => `• ${l.p.group}: ${l.p.name} — ${l.q} шт`).join("\n");
+  if (total()) t += "\n\nИтого: " + rub(total()) + (unpriced() ? " + уточним" : "");
+  t += `\n\n${S.name}, ${S.phone}\nПолучение: ${S.delivery}`;
+  if (S.delivery === "СДЭК" && S.address) t += "\nАдрес: " + S.address;
+  if (S.comment) t += "\nКомментарий: " + S.comment;
+  return t;
+}
+function openTelegram(text){
+  const url = "https://t.me/" + CONFIG.TELEGRAM_USER + "?text=" + encodeURIComponent(text);
+  if (tg && tg.openTelegramLink) tg.openTelegramLink(url); else window.open(url, "_blank");
+}
+
+async function submit(){
+  if (S.sending) return;
+  if (!S.name.trim()) return toast("Укажите имя");
+  if (S.phone.replace(/\D/g,"").length < 10) return toast("Укажите телефон");
+  if (S.delivery==="СДЭК" && !S.address.trim()) return toast("Укажите город и пункт СДЭК");
+  save("rt_client",{name:S.name,phone:S.phone,delivery:S.delivery,address:S.address});
+  if (!CONFIG.APPS_URL) { openTelegram(orderText()); return; }
+  reqId = reqId || (crypto.randomUUID ? crypto.randomUUID() : "rt-" + Date.now() + Math.random().toString(36).slice(2));
+  S.sending = true; S.error = ""; render();
+  try {
+    const r = await fetch(CONFIG.APPS_URL, { method:"POST", headers:{"Content-Type":"text/plain;charset=utf-8"}, body: JSON.stringify({
+      requestId:reqId, name:S.name.trim(), phone:S.phone.trim(), comment:S.comment.trim(), delivery:S.delivery,
+      address: S.delivery==="СДЭК" ? S.address.trim() : "", items: lines().map(l => ({code:l.p.code, qty:l.q})),
+      tgId: tgUser ? tgUser.id : "", tgUsername: tgUser ? (tgUser.username||"") : "" }) });
+    const d = await r.json();
+    if (!d || !d.ok) throw new Error((d && d.error) || "Ошибка");
+    S.sending = false; S.done = d; cart = {}; save("rt_cart",cart); S.comment = ""; reqId = null; go("done");
+  } catch(e){
+    S.sending = false; S.error = "Нет связи. Сейчас откроем Telegram — отправьте заказ сообщением."; render();
+    setTimeout(() => openTelegram(orderText()), 800);
+  }
+}
+init();
+</script>
+</body>
+</html>

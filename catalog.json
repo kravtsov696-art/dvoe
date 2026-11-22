@@ -1,0 +1,394 @@
+[
+{
+"code": "RT-GYP-III-5-MLK",
+"group": "Гипс",
+"name": "III класс · молочный · 5 кг",
+"price": 800,
+"img": "gips-3colors.webp"
+},
+{
+"code": "RT-GYP-III-10-MLK",
+"group": "Гипс",
+"name": "III класс · молочный · 10 кг",
+"price": 1500,
+"img": "gips-3colors.webp"
+},
+{
+"code": "RT-GYP-III-5-SKY",
+"group": "Гипс",
+"name": "III класс · голубой · 5 кг",
+"price": 800,
+"img": "gips-3colors.webp"
+},
+{
+"code": "RT-GYP-III-10-SKY",
+"group": "Гипс",
+"name": "III класс · голубой · 10 кг",
+"price": 800,
+"img": "gips-3colors.webp"
+},
+{
+"code": "RT-GYP-III-5-BLU",
+"group": "Гипс",
+"name": "III класс · синий · 5 кг",
+"price": 800,
+"img": "gips-3colors.webp"
+},
+{
+"code": "RT-GYP-III-10-BLU",
+"group": "Гипс",
+"name": "III класс · синий · 10 кг",
+"price": 1500,
+"img": "gips-3colors.webp"
+},
+{
+"code": "RT-GYP-IV-5-GRN",
+"group": "Гипс",
+"name": "IV класс · зелёный · 5 кг",
+"price": null,
+"img": "melident.webp"
+},
+{
+"code": "RT-GYP-IV-10-GRN",
+"group": "Гипс",
+"name": "IV класс · зелёный · 10 кг",
+"price": 2200,
+"img": "melident.webp"
+},
+{
+"code": "RT-GYP-IV-5-YEL",
+"group": "Гипс",
+"name": "IV класс · жёлтый · 5 кг",
+"price": null,
+"img": "melident.webp"
+},
+{
+"code": "RT-GYP-IV-10-YEL",
+"group": "Гипс",
+"name": "IV класс · жёлтый · 10 кг",
+"price": 2200,
+"img": "melident.webp"
+},
+{
+"code": "RT-GYP-IV-5-PNK",
+"group": "Гипс",
+"name": "IV класс · розовый · 5 кг",
+"price": 1300,
+"img": "melident.webp"
+},
+{
+"code": "RT-GYP-IV-10-PNK",
+"group": "Гипс",
+"name": "IV класс · розовый · 10 кг",
+"price": 2200,
+"img": "melident.webp"
+},
+{
+"code": "RT-GYP-IV-5-CRM",
+"group": "Гипс",
+"name": "IV класс · кремовый · 5 кг",
+"price": null,
+"img": "melident.webp"
+},
+{
+"code": "RT-GYP-IV-10-CRM",
+"group": "Гипс",
+"name": "IV класс · кремовый · 10 кг",
+"price": 2200,
+"img": "melident.webp"
+},
+{
+"code": "RT-TTH-2L-32-A2",
+"group": "Акриловые зубы",
+"name": "Двухслойные, 3 гарнитура · A2 · 425 / U37 / 32",
+"price": null,
+"img": "teeth-box.webp"
+},
+{
+"code": "RT-TTH-2L-34-A2",
+"group": "Акриловые зубы",
+"name": "Двухслойные, 3 гарнитура · A2 · 438 / U38 / 34",
+"price": 1500,
+"img": "teeth-box.webp"
+},
+{
+"code": "RT-TTH-2L-36-A2",
+"group": "Акриловые зубы",
+"name": "Двухслойные, 3 гарнитура · A2 · 503 / U67 / 36",
+"price": null,
+"img": "teeth-box.webp"
+},
+{
+"code": "RT-TTH-2L-32-A3",
+"group": "Акриловые зубы",
+"name": "Двухслойные, 3 гарнитура · A3 · 425 / U37 / 32",
+"price": null,
+"img": "teeth-box.webp"
+},
+{
+"code": "RT-TTH-2L-34-A3",
+"group": "Акриловые зубы",
+"name": "Двухслойные, 3 гарнитура · A3 · 438 / U38 / 34",
+"price": 1500,
+"img": "teeth-box.webp"
+},
+{
+"code": "RT-TTH-2L-36-A3",
+"group": "Акриловые зубы",
+"name": "Двухслойные, 3 гарнитура · A3 · 503 / U67 / 36",
+"price": 1500,
+"img": "teeth-box.webp"
+},
+{
+"code": "RT-TTH-2L-32-A35",
+"group": "Акриловые зубы",
+"name": "Двухслойные, 3 гарнитура · A3.5 · 425 / U37 / 32",
+"price": null,
+"img": "teeth-box.webp"
+},
+{
+"code": "RT-TTH-2L-34-A35",
+"group": "Акриловые зубы",
+"name": "Двухслойные, 3 гарнитура · A3.5 · 438 / U38 / 34",
+"price": null,
+"img": "teeth-box.webp"
+},
+{
+"code": "RT-TTH-2L-36-A35",
+"group": "Акриловые зубы",
+"name": "Двухслойные, 3 гарнитура · A3.5 · 503 / U67 / 36",
+"price": null,
+"img": "teeth-box.webp"
+},
+{
+"code": "RT-TTH-3L-A2",
+"group": "Акриловые зубы",
+"name": "Трёхслойные, гарнитур 28 шт · A2",
+"price": null,
+"img": "teeth-box.webp"
+},
+{
+"code": "RT-TTH-3L-A3",
+"group": "Акриловые зубы",
+"name": "Трёхслойные, гарнитур 28 шт · A3",
+"price": null,
+"img": "teeth-box.webp"
+},
+{
+"code": "RT-PLS-OPAQUE-100",
+"group": "Пластмассы",
+"name": "Опаковая · горячая полимеризация · 100 г",
+"price": null,
+"img": "snd.webp"
+},
+{
+"code": "RT-PLS-HOT-100-3S",
+"group": "Пластмассы",
+"name": "Розовая с прожилками · горячая полимеризация · 100 г",
+"price": 570,
+"img": "pigeon-hot.webp"
+},
+{
+"code": "RT-PLS-HOT-100-CLR",
+"group": "Пластмассы",
+"name": "Прозрачная · горячая полимеризация · 100 г",
+"price": null,
+"img": "pigeon-hot.webp"
+},
+{
+"code": "RT-PLS-FAST-CLR",
+"group": "Пластмассы",
+"name": "Бесцветная · холодная (самотвердеющая)",
+"price": null,
+"img": "pigeon-cold.webp"
+},
+{
+"code": "RT-PLS-HOT-100-T03",
+"group": "Пластмассы",
+"name": "Розовая Т 03 · горячая полимеризация · 100 г",
+"price": null,
+"img": "pigeon-hot.webp"
+},
+{
+"code": "RT-PLS-HOT-100-TV02",
+"group": "Пластмассы",
+"name": "ТВ 02 · горячая полимеризация · 100 г",
+"price": null,
+"img": "pigeon-hot.webp"
+},
+{
+"code": "RT-NYL-100-PNK",
+"group": "Нейлон",
+"name": "Розовый · 100 г",
+"price": null,
+"img": "nylon-pink.webp"
+},
+{
+"code": "RT-NYL-100-CLR",
+"group": "Нейлон",
+"name": "Прозрачный · 100 г",
+"price": null,
+"img": "nylon-clear.webp"
+},
+{
+"code": "RT-SLV-22-100",
+"group": "Гильзы",
+"name": "Ø 22 × 100 мм, 20 шт",
+"price": 2000,
+"img": "gilzy.webp"
+},
+{
+"code": "RT-SLV-22-120",
+"group": "Гильзы",
+"name": "Ø 22 × 120 мм, 20 шт",
+"price": 2000,
+"img": "gilzy.webp"
+},
+{
+"code": "RT-SLV-25-100",
+"group": "Гильзы",
+"name": "Ø 25 × 100 мм, 20 шт",
+"price": 2000,
+"img": "gilzy.webp"
+},
+{
+"code": "RT-SLV-28-100",
+"group": "Гильзы",
+"name": "Ø 28 × 100 мм, 20 шт",
+"price": 2000,
+"img": "gilzy.webp"
+},
+{
+"code": "RT-SLV-INJ-25-45",
+"group": "Гильзы",
+"name": "Ø 25 / 45 мм, для инжекции",
+"price": null,
+"img": "gilzy.webp"
+},
+{
+"code": "RT-OCC-S",
+"group": "Окклюдаторы",
+"name": "Размер S · комплект 3 шт",
+"price": 1800,
+"img": "articulator.webp"
+},
+{
+"code": "RT-OCC-M",
+"group": "Окклюдаторы",
+"name": "Размер M · комплект 3 шт",
+"price": null,
+"img": "articulator.webp"
+},
+{
+"code": "RT-OCC-L",
+"group": "Окклюдаторы",
+"name": "Размер L · комплект 3 шт",
+"price": null,
+"img": "articulator.webp"
+},
+{
+"code": "RT-DSC-22-02",
+"group": "Сепарационные диски",
+"name": "Ø 22 мм · алмазный",
+"price": null,
+"img": "discs.webp"
+},
+{
+"code": "RT-DSC-CER-22",
+"group": "Сепарационные диски",
+"name": "Ø 22 мм · для керамики",
+"price": 120,
+"img": "discs.webp"
+},
+{
+"code": "RT-DSC-EDGE-22",
+"group": "Сепарационные диски",
+"name": "Ø 22 мм · с алмазной кромкой",
+"price": null,
+"img": "discs.webp"
+},
+{
+"code": "RT-FILC-22-55",
+"group": "Фильцы шерстяные",
+"name": "Цилиндрические · Ø 22 × 55 мм",
+"price": null,
+"img": "felt.webp"
+},
+{
+"code": "RT-FILC-DISC-22",
+"group": "Фильцы шерстяные",
+"name": "Дисковые · Ø 22 мм",
+"price": null,
+"img": "felt.webp"
+},
+{
+"code": "RT-ART-JT02B",
+"group": "Ещё для лаборатории",
+"name": "Артикулятор магнитный",
+"price": null,
+"img": "articulator.webp"
+},
+{
+"code": "RT-TRAY-S",
+"group": "Ещё для лаборатории",
+"name": "Ложки слепочные · размер S",
+"price": null,
+"img": ""
+},
+{
+"code": "RT-TRAY-L",
+"group": "Ещё для лаборатории",
+"name": "Ложки слепочные · размер L",
+"price": null,
+"img": ""
+},
+{
+"code": "RT-PIN-500",
+"group": "Ещё для лаборатории",
+"name": "Штифты зуботехнические · 500 шт",
+"price": null,
+"img": ""
+},
+{
+"code": "RT-BIPIN-100",
+"group": "Ещё для лаборатории",
+"name": "Би-пины для разборных моделей",
+"price": 2000,
+"img": ""
+},
+{
+"code": "RT-BIPIN-NI-15",
+"group": "Ещё для лаборатории",
+"name": "Би-пины никелированные со втулками",
+"price": null,
+"img": ""
+},
+{
+"code": "RT-PAPER-100",
+"group": "Ещё для лаборатории",
+"name": "Артикуляционная бумага 100 мкм",
+"price": null,
+"img": ""
+},
+{
+"code": "RT-TRG-MET",
+"group": "Ещё для лаборатории",
+"name": "Трегер для керамики · 2 шт",
+"price": null,
+"img": ""
+},
+{
+"code": "RT-POL-10-40",
+"group": "Ещё для лаборатории",
+"name": "Круг полировальный · 40 слоёв",
+"price": null,
+"img": "cotton-front.webp"
+},
+{
+"code": "RT-POL-12-50",
+"group": "Ещё для лаборатории",
+"name": "Круг полировальный · 50 слоёв",
+"price": 500,
+"img": "cotton-side.webp"
+}
+]
